@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dev Detective — GitHub Search | Prodesk IT</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">P</div>
+            <span class="brand">Prodesk<span class="accent">IT</span></span>
+        </div>
+        <div class="header-right">
+            <span class="sprint-badge">Sprint 03</span>
+            <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="container">
+
+        <!-- PAGE TITLE -->
+        <div class="page-title">
+            <h1>Dev <span class="accent">Detective</span></h1>
+            <p>Search any GitHub user and explore their profile</p>
+        </div>
+
+        <!-- SEARCH BAR -->
+        <div class="search-wrapper">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Enter GitHub username..." 
+                    autocomplete="off"
+                />
+                <button id="searchBtn" class="search-btn">Search</button>
+            </div>
+        </div>
+
+        <!-- BATTLE MODE TOGGLE -->
+        <div class="battle-toggle-wrapper">
+            <button id="battleToggle" class="battle-toggle-btn">
+                <i class="fas fa-sword"></i> Enable Battle Mode ⚔️
+            </button>
+        </div>
+
+        <!-- BATTLE MODE INPUTS -->
+        <div id="battleInputs" class="battle-inputs hidden">
+            <div class="battle-search-box">
+                <i class="fas fa-user search-icon"></i>
+                <input 
+                    type="text" 
+                    id="battleUser1" 
+                    placeholder="First GitHub username..."
+                    autocomplete="off"
+                />
+            </div>
+            <span class="vs-text">VS</span>
+            <div class="battle-search-box">
+                <i class="fas fa-user search-icon"></i>
+                <input 
+                    type="text" 
+                    id="battleUser2" 
+                    placeholder="Second GitHub username..."
+                    autocomplete="off"
+                />
+            </div>
+            <button id="battleSearchBtn" class="search-btn">
+                <i class="fas fa-bolt"></i> Battle!
+            </button>
+        </div>
+
+        <!-- LOADING STATE -->
+        <div id="loadingState" class="loading-state hidden">
+            <div class="spinner"></div>
+            <p>Fetching GitHub data...</p>
+        </div>
+
+        <!-- ERROR STATE -->
+        <div id="errorState" class="error-state hidden">
+            <i class="fas fa-circle-xmark error-icon"></i>
+            <h3>User Not Found</h3>
+            <p>No GitHub user matches <span id="errorUsername"></span></p>
+        </div>
+
+        <!-- PROFILE CARD -->
+        <div id="profileCard" class="profile-card hidden">
+
+            <!-- User Info -->
+            <div class="profile-header">
+                <img id="avatar" src="" alt="Avatar" class="avatar" />
+                <div class="profile-info">
+                    <h2 id="userName">—</h2>
+                    <p id="userLogin" class="user-login">—</p>
+                    <p id="userBio" class="user-bio">—</p>
+                    <a id="userBlog" href="#" target="_blank" class="user-blog hidden">
+                        <i class="fas fa-link"></i>
+                        <span id="userBlogText">—</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="stats-row">
+                <div class="stat-item">
+                    <p class="stat-value" id="userRepos">0</p>
+                    <p class="stat-label">Repositories</p>
+                </div>
+                <div class="stat-item">
+                    <p class="stat-value" id="userFollowers">0</p>
+                    <p class="stat-label">Followers</p>
+                </div>
+                <div class="stat-item">
+                    <p class="stat-value" id="userFollowing">0</p>
+                    <p class="stat-label">Following</p>
+                </div>
+            </div>
+
+            <!-- Join Date -->
+            <div class="join-date">
+                <i class="fas fa-calendar"></i>
+                <span>Joined: </span>
+                <span id="userJoined">—</span>
+            </div>
+
+        </div>
+
+        <!-- REPOS LIST -->
+        <div id="reposSection" class="repos-section hidden">
+            <h3 class="repos-title">
+                <i class="fas fa-code-branch"></i> 
+                Top 5 Latest Repositories
+            </h3>
+            <ul id="reposList" class="repos-list"></ul>
+        </div>
+
+        <!-- BATTLE RESULTS -->
+        <div id="battleResults" class="battle-results hidden">
+            <h2 class="battle-title">⚔️ Battle Results</h2>
+            <div class="battle-cards">
+                <div id="battleCard1" class="battle-card"></div>
+                <div id="battleCard2" class="battle-card"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
